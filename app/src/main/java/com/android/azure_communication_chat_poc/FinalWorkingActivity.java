@@ -59,15 +59,15 @@ import static androidx.core.app.NotificationCompat.PRIORITY_MAX;
 public class FinalWorkingActivity extends AppCompatActivity {
 
     private final String sdkVersion = "1.0.0";
-    private static final String APPLICATION_ID = "Chat Quickstart App";
+    private static final String APPLICATION_ID = "Chat POC App";
     private static final String SDK_NAME = "azure-communication-com.azure.android.communication.chat";
     private static final String TAG = "Chat POC App";
-    private static final String firstUserId = "8:acs:a2a000be-2d06-429b-ba20-0d1c504e89b6_0000000d-47c0-7960-71bf-a43a0d00031b";
+    private static final String firstUserId = "";
 
-    private static final String resourceUrl = "https://helios-communications-dev.communication.azure.com";
-    private String firstUserAccessToken = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEwMyIsIng1dCI6Ikc5WVVVTFMwdlpLQTJUNjFGM1dzYWdCdmFMbyIsInR5cCI6IkpXVCJ9.eyJza3lwZWlkIjoiYWNzOmEyYTAwMGJlLTJkMDYtNDI5Yi1iYTIwLTBkMWM1MDRlODliNl8wMDAwMDAwZC01NjU5LWFmZTMtYWFmNS0yMzQ4MjIwMDBkNTgiLCJzY3AiOjE3OTIsImNzaSI6IjE2MzUxNDg4OTMiLCJleHAiOjE2MzUyMzUyOTMsImFjc1Njb3BlIjoiY2hhdCIsInJlc291cmNlSWQiOiJhMmEwMDBiZS0yZDA2LTQyOWItYmEyMC0wZDFjNTA0ZTg5YjYiLCJpYXQiOjE2MzUxNDg4OTN9.qs-AUS1X1E_IV1Sr5etqxJ6kExDb9-0kpnpgLihxDuAt3Bk6Q__yOH_vxlETwtEmylTzFsFB_i0HGIgangQ_g89fWkNmf34gpvwqJUIydkqy3zW46L6hO7tE2CnrOvyzjQAmcvDCH9tQ3BRXk4PjJGQX8HEpSBu5QmSFiV21HzMPYKSQp3MTNXCNvoBgdqXY6cFe8G8oAp61obGTT017QRlUg6rstLOTlDPkmIj4fHq-bVORrScF7Uv33gU3Y7j-iF04soc801-I8XWhXalCPj3OaUvSwc-2tHX0XBkA-jl9a1-9v0u6jGedGGffoMjkZ78bxuXRXgzlyxL9VdjMmA";
-    private String userDisplayName = "Iyer";
-    private String threadId = "19:jS9KsQ8fT6iruxWMa5rTmmkOdx6v_-Xn2VKeaRPscIU1@thread.v2";
+    private static final String resourceUrl = "";
+    private String firstUserAccessToken = "";
+    private String userDisplayName = "";
+    private String threadId = "";
     private ChatThreadAsyncClient chatThreadAsyncClient;
     ChatAsyncClient chatAsyncClient;
 
