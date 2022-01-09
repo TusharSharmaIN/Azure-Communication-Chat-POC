@@ -8,19 +8,43 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_thread_id"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:visibility="gone"
         android:layout_marginTop="12dp"
         android:hint="Add thread ID"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_list_users_in_thread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_list_users_in_thread"
+        android:layout_width="0dp"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
+        android:text="Get thread users"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_thread_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_create_chat_thread"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp"
+        android:text="Create chat Thread"
+        app:layout_constraintTop_toBottomOf="@+id/et_thread_id"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_margin="16dp"
         android:id="@+id/rv_chat_messages"
-        app:layout_constraintTop_toBottomOf="@+id/et_thread_id"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_chat_thread"
         app:layout_constraintBottom_toTopOf="@+id/et_message_body"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
@@ -41,14 +65,24 @@
         android:id="@+id/btn_send"
         android:layout_width="138dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="133dp"
         android:text="Send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_typing_indicator"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_typing_indicator"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
+        android:text="Send Typing Indicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btn_send" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
