@@ -1,8 +1,6 @@
 package com.android.azure_communication_chat_poc;
 
 import android.content.Context;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,34 +10,46 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
+
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
-    ArrayList<ChatModel> chatMessages;
+    private static final int LAYOUT_SENDER = 0;
+    private static final int LAYOUT_RECEIVER = 1;
     Context context;
-    public ChatAdapter(ArrayList<ChatModel> chatMessages) {
+    ArrayList<ChatMessages> chatMessages;
+
+    public ChatAdapter(ArrayList<ChatMessages> chatMessages) {
         this.chatMessages = chatMessages;
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        ChatMessages message = chatMessages.get(position);
+        if (message.isFromMyEnd()) {
+            return LAYOUT_SENDER;
+        }
+        return LAYOUT_RECEIVER;
+    }
+
     @Override
     public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         this.context = parent.getContext();
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_chat_item, parent, false);
+        View view;
+        if (viewType == LAYOUT_SENDER) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_message_right, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_message_left, parent, false);
+        }
         return new ChatViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
-        ChatModel chatModel = chatMessages.get(position);
-
-        if (chatModel.getHasImage()) {
-            holder.ivAttachment.setVisibility(View.VISIBLE);
-            Glide.with(this.context).load(chatModel.getImageUrl()).into(holder.ivAttachment);
-        } else {
-            holder.ivAttachment.setVisibility(View.GONE);
-        }
-        holder.tvMessage.setText(boldPartOfString(0, chatModel.getTextMessage().indexOf(":"), chatModel.getTextMessage()));
+        ChatMessages message = chatMessages.get(position);
+        holder.tvMessageFrom.setText(message.getSenderName() + ":");
+        holder.tvMessage.setText(message.getMessage());
+        holder.tvDate.setText(message.getDate());
     }
 
     @Override
@@ -48,19 +58,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     }
 
     public static class ChatViewHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView tvMessage;
+        AppCompatTextView tvMessage, tvMessageFrom, tvDate;
         AppCompatImageView ivAttachment;
 
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
             tvMessage = itemView.findViewById(R.id.tv_message);
-            ivAttachment = itemView.findViewById(R.id.iv_attachment);
+            tvDate = itemView.findViewById(R.id.tv_date);
+            tvMessageFrom = itemView.findViewById(R.id.tv_message_from);
         }
-    }
-
-    public String boldPartOfString(int start, int end, String text) {
-        SpannableStringBuilder str = new SpannableStringBuilder(text);
-        str.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return str.toString();
     }
 }
