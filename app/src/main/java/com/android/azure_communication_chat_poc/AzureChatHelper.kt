@@ -16,7 +16,7 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class AzureChatHelper {
-    private val resourceUrl = ""
+    var resourceUrl = ""
     private val sdkVersion = "1.0.0"
     private val applicationId = "Azure_Chat_POC"
     private val sdkName = "azure-communication-com.azure.android.communication.chat"

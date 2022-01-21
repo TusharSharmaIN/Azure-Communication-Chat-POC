@@ -23,24 +23,30 @@ import java.util.concurrent.ExecutionException
 class ChatActivity : AppCompatActivity(), ChatService.OnChatMessageReceived, AzureChatHelper.AzureCommunicationCallbacks {
 
     private var linearLayoutManager: LinearLayoutManager? = null
-    var adapter: ChatAdapterNew? = null
-    var myName = "Chat Admin"
+    var adapter: ChatAdapter? = null
+    var myName = ""
     var allMessageList: ArrayList<ChatMessages> = ArrayList<ChatMessages>()
     private var threadId = ""
     private var token = ""
-    private var chatParticipantName = "Chat Admin"
+    private var resourceUrl = ""
     private lateinit var azureChatHelper: AzureChatHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        adapter = ChatAdapterNew(allMessageList)
+        threadId = intent.extras?.getString("THREAD_ID").toString()
+        myName = intent.extras?.getString("USER_NAME").toString()
+        token = intent.extras?.getString("TOKEN").toString()
+        resourceUrl = intent.extras?.getString("RESOURCE_URL").toString()
+
+        adapter =
+            ChatAdapter(allMessageList)
         linearLayoutManager = LinearLayoutManager(this)
         rv_chat_messages.layoutManager = linearLayoutManager
         rv_chat_messages.adapter = adapter
-        myName = "Chat Admin"
         azureChatHelper = AzureChatHelper(threadId, myName, token)
+        azureChatHelper.resourceUrl = resourceUrl
 
         try {
             azureChatHelper.createChatAsyncClient()
@@ -155,7 +161,9 @@ class ChatActivity : AppCompatActivity(), ChatService.OnChatMessageReceived, Azu
         allMessages.reverse()
         allMessageList = allMessages
         Handler(Looper.getMainLooper()).post {
-            adapter = ChatAdapterNew(allMessageList)
+            adapter = ChatAdapter(
+                allMessageList
+            )
             linearLayoutManager = LinearLayoutManager(this)
             rv_chat_messages.layoutManager = linearLayoutManager
             rv_chat_messages.adapter = adapter
