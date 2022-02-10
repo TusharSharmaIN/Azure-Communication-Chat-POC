@@ -6,7 +6,7 @@ For more details, refer to the blog on:
 
 [Android Chat App In Six Simple Steps Using Azure Communication]()
 
-## Screenshot:
+## Screenshots:
 ### First Screen:
 <img src="Screenshot_1644476372.png" width="200" height="400">
 
