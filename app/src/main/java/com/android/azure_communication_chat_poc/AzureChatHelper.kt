@@ -22,25 +22,25 @@ class AzureChatHelper {
     private val sdkName = "azure-communication-com.azure.android.communication.chat"
     private var threadId = ""
     private var chatParticipantName = ""
-    private var token = ""
+    private var userAccessToken = ""
     var chatAsyncClient: ChatAsyncClient? = null
     var chatThreadAsyncClient: ChatThreadAsyncClient? = null
 
-    constructor(threadId: String, chatParticipantName: String, token: String) {
+    constructor(threadId: String, chatParticipantName: String, userAccessToken: String) {
         this.threadId = threadId
         this.chatParticipantName = chatParticipantName
-        this.token = token
+        this.userAccessToken = userAccessToken
     }
 
-    constructor(token: String) {
-        this.token = token
+    constructor(userAccessToken: String) {
+        this.userAccessToken = userAccessToken
     }
 
     fun createChatAsyncClient() {
         try {
             chatAsyncClient = ChatClientBuilder()
                     .endpoint(resourceUrl)
-                    .credential(CommunicationTokenCredential(token))
+                    .credential(CommunicationTokenCredential(userAccessToken))
                     .addPolicy(UserAgentPolicy(applicationId, sdkName, sdkVersion))
                     .buildAsyncClient()
         } catch (exception: Exception) {
@@ -53,7 +53,7 @@ class AzureChatHelper {
             // Initialize Chat Thread Client
             chatThreadAsyncClient = ChatThreadClientBuilder()
                     .endpoint(resourceUrl)
-                    .credential(CommunicationTokenCredential(token))
+                    .credential(CommunicationTokenCredential(userAccessToken))
                     .chatThreadId(threadId)
                     .buildAsyncClient()
         } catch (exception: Exception) {
@@ -107,7 +107,7 @@ class AzureChatHelper {
     }
 
     fun receiveChatMessages(context: Context, onChatMessageReceived: ChatService.OnChatMessageReceived) {
-        chatAsyncClient!!.startRealtimeNotifications(token, context)
+        chatAsyncClient!!.startRealtimeNotifications(userAccessToken, context)
         chatAsyncClient!!.addEventHandler(ChatEventType.CHAT_MESSAGE_RECEIVED, ChatService(onChatMessageReceived))
     }
 
@@ -149,7 +149,6 @@ class AzureChatHelper {
         val createChatThreadResult = chatAsyncClient!!.createChatThread(createChatThreadOptions).get()
         val chatThreadProperties = createChatThreadResult.chatThreadProperties
         val threadId = chatThreadProperties.id
-        Log.d("sdjashd", "New threadId->$threadId")
         return threadId
     }
 

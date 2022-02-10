@@ -27,7 +27,7 @@ class ChatActivity : AppCompatActivity(), ChatService.OnChatMessageReceived, Azu
     var myName = ""
     var allMessageList: ArrayList<ChatMessages> = ArrayList<ChatMessages>()
     private var threadId = ""
-    private var token = ""
+    private var userAccessToken = ""
     private var resourceUrl = ""
     private lateinit var azureChatHelper: AzureChatHelper
 
@@ -37,7 +37,7 @@ class ChatActivity : AppCompatActivity(), ChatService.OnChatMessageReceived, Azu
 
         threadId = intent.extras?.getString("THREAD_ID").toString()
         myName = intent.extras?.getString("USER_NAME").toString()
-        token = intent.extras?.getString("TOKEN").toString()
+        userAccessToken = intent.extras?.getString("TOKEN").toString()
         resourceUrl = intent.extras?.getString("RESOURCE_URL").toString()
 
         adapter =
@@ -45,7 +45,7 @@ class ChatActivity : AppCompatActivity(), ChatService.OnChatMessageReceived, Azu
         linearLayoutManager = LinearLayoutManager(this)
         rv_chat_messages.layoutManager = linearLayoutManager
         rv_chat_messages.adapter = adapter
-        azureChatHelper = AzureChatHelper(threadId, myName, token)
+        azureChatHelper = AzureChatHelper(threadId, myName, userAccessToken)
         azureChatHelper.resourceUrl = resourceUrl
 
         try {
