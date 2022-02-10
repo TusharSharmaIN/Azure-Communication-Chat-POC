@@ -39,9 +39,9 @@ android {
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/notice'
         exclude 'META-INF/ASL2.0'
-        exclude("META-INF/*.md")
-        exclude("META-INF/*.txt")
-        exclude("META-INF/*.kotlin_module")
+        exclude 'META-INF/*.md'
+        exclude 'META-INF/*.txt'
+        exclude 'META-INF/*.kotlin_module'
     }
 }
 
