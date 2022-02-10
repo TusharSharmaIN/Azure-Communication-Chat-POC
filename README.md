@@ -4,7 +4,7 @@ This is the simple Chat app implemented with the help of Azure Communication Ser
 
 For more details, refer to the blog on:
 
-[Android Chat App In Six Simple Steps Using Azure Communication]()
+[Android Chat App In Six Simple Steps Using Azure Communication](https://blog.kiprosh.com/android-chat-app-using-azure-communication/)
 
 ## Screenshots:
 ### First Screen:
@@ -12,4 +12,3 @@ For more details, refer to the blog on:
 
 ### Chat Screen:
 <img src="Screenshot 2022-01-21 at 6.03.34 PM.png" width="600" height="600">
-
