@@ -1,5 +1,9 @@
 # Azure-Communication-Chat-POC
 
+This is the simple Chat app implemented with the help of Azure Communication Service- Chat library.
+For more details, refer to the blog on:
+[Android Chat App In Six Simple Steps Using Azure Communication]()
+
 ## Screenshot:
 ### First Screen:
 <img src="Screenshot_1644476372.png" width="200" height="400">
