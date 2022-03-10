@@ -1,6 +1,6 @@
 # Azure Communication Services-Android Chat App
 
-This is the simple Chat app implemented with the help of Azure Communication Service-Chat library.
+This is the simple Chat app implemented with the help of Azure Communication Services-Chat library.
 
 For more details, refer to the blog on:
 
