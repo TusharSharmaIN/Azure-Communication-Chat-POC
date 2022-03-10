@@ -1,4 +1,4 @@
-# Azure-Communication-Chat-POC
+# Azure Communication Service-Android Chat App
 
 This is the simple Chat app implemented with the help of Azure Communication Service-Chat library.
 
