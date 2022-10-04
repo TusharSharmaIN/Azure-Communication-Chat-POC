@@ -4,7 +4,9 @@ This is the simple Chat app implemented with the help of Azure Communication Ser
 
 For more details, refer to the blog on:
 
-[Android Chat App In Six Simple Steps Using Azure Communication](https://blog.kiprosh.com/android-chat-app-using-azure-communication/)
+1. [Android Chat App In Six Simple Steps Using Azure Communication](https://blog.kiprosh.com/android-chat-app-using-azure-communication/)
+2. [How to build a robust chat app using Azure Communications Service?](https://blog.kiprosh.com/how-to-build-a-robust-chat-app-using-azure-communications-service/)
+
 
 ## Screenshots:
 ### First Screen:
